@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '+%114%eiw%6egic$w9u48m=$9chuee94p+f(y_qm8dgn*xhca)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.196.8.42',
+ALLOWED_HOSTS = ['10.196.8.42', '127.0.0.1', 'mytrendrapp.herokuapp.com',
                 'localhost']
 
 
@@ -82,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'twitter',
-        'USER': 'mgj',
-        'PASSWORD': 'qwerty',
+        'USER': 'postgres',
+        'PASSWORD': 'peddi',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -132,3 +133,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'twitter_list'
 LOGIN_URL = 'login'
+
+django_heroku.settings(locals())
